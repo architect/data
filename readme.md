@@ -1,6 +1,6 @@
-# @architect/data
+# <kbd>:cloud_with_lightning: @architect/data</kbd>
 
-Generate a DynamoDB data access layer from an `.arc` file. Automatically disambiguates `testing` (in memory) from deployment `staging` and `production` tables.
+> Generate a DynamoDB data access layer from an `.arc` file. Automatically disambiguates `testing` (in memory) from deployment `staging` and `production` tables
 
 ### Background
 
