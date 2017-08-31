@@ -125,6 +125,7 @@ You can immediately start using the generated methods:
 var data = require('@architect/data')
 var app = data() // reads the local .arc in the current working dictory
 
+// create a post
 app.posts.put({
   accountID: 'fake-id',
   postID: 'fake-post-id',
@@ -134,6 +135,31 @@ function _put(err, result) {
   if (err) throw err
   console.log(result)
 })
+
+// read it back
+app.posts.get({
+  postID: 'fake-post-id'
+}, console.log)
+
+// update the record
+app.posts.update({
+  Key: { 
+    postID: 'fake-post-id' 
+  },
+  UpdateExpression: 'set #title = :title', 
+  ExpressionAttributeNames: {
+    '#title' : 'title'
+  },
+  ExpressionAttributeValues: {
+    ':title' : 'super neato',
+  }
+}, console.log)
+
+// destroy it
+app.posts.destroy({
+  postID: 'fake-post-id'
+}, console.log)
+
 ```
 
 Check the tests for a detailed example! More docs coming :soon:

@@ -1,22 +1,23 @@
 {
   "name": "@architect/data",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dynamically generate a DynamoDB data access layer from an .arc file",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=testing node test | tap-spec"
   },
-  "keywords": [],
+  "keywords": ["arc", "architect", "aws", "aws-sdk", "dynamodb"],
   "author": "Brian LeRoux <b@brian.io>",
   "license": "Apache-2.0",
   "devDependencies": {
     "aws-sdk": "^2.106.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.8.0"
+    "tape": "^4.8.0",
+    "@architect/workflows": "^1.1.7",
+    "run-parallel": "^1.1.6"
   },
   "dependencies": {
     "@architect/parser": "^1.0.5",
-    "@architect/workflows": "^1.1.7",
-    "run-parallel": "^1.1.6"
+    "file-exists": "^4.0.0"
   }
 }

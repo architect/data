@@ -4,15 +4,23 @@ var aws = require('aws-sdk')
 var _db = require('./db')
 var _doc = require('./doc')
 var parse = require('@architect/parser')
+var exists = require('file-exists')
 
 /**
  * reads the cwd .arc
  * and generates a data access layer
  */
-module.exports = function data() {
+module.exports = function data(p) {
   
   // reads .arc from cwd
-  var arc = parse(fs.readFileSync(path.join(process.cwd(), '.arc')).toString())
+  var arcPath = typeof p != 'undefined'? p : path.join(process.cwd(), '.arc')
+  var notFound = !exists.sync(arcPath)
+
+  if (notFound) {
+    throw ReferenceError('.arc file not found')
+  }
+
+  var arc = parse(fs.readFileSync(arcPath).toString())
   var app = arc.app[0]
 
   // helper for getting a table name
@@ -26,6 +34,10 @@ module.exports = function data() {
 
   // create a map of data access methods for each table
   var data = tables.map(TableName=> ({
+    /**
+     * TODO need to document how everything prepopulates the TableName param
+     * TODO need to document how delete, get and put accept params directly [keys(s) and item respectively]
+     */
     delete(key, callback) {
       var params = {}
       params.TableName = TableName
@@ -68,15 +80,31 @@ module.exports = function data() {
   }))
  
   // builds out a data layer object
+  var layer = {}
+
+  // add _name, _db and _doc helper shortcuts 
+  Object.defineProperty(layer, '_name', {
+    enumerable: false,
+    value: _name
+  })
+
+  Object.defineProperty(layer, '_db', {
+    enumerable: false,
+    value: _db
+  })
+
+  Object.defineProperty(layer, '_doc', {
+    enumerable: false,
+    value: _doc
+  })
+
+  // add the tables to the returned object
   var index = 0
-  var layer = {
-    _name,
-    _db,
-    _doc,
-  }
-  arc.tables.map(t=> Object.keys(t)[0]).forEach(table=> {
+  var names = arc.tables.map(t=> Object.keys(t)[0])
+  names.forEach(table=> {
     layer[table] = data[index]
     index += 1
   })
+
   return layer
 }

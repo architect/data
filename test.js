@@ -2,6 +2,7 @@ var test = require('tape')
 var parallel = require('run-parallel')
 var data = require('.')
 var arc = require('@architect/workflows')
+var path = require('path')
 
 test('env', t=> {
   t.plan(1)
@@ -16,12 +17,26 @@ test('starts the db server', t=> {
   })
 })
 
+test('fails correctly', t=> {
+  t.plan(1)
+  try {
+    testapp = data(path.join(__dirname, '..'))
+  }
+  catch(e) {
+    t.ok(e, e)
+  }
+})
+
 var testapp
 test('put', t=>{
-  t.plan(3)
+  t.plan(6)
   testapp = data() // reads .arc 
   t.ok(testapp, 'got data')
   t.ok(testapp.hashids, 'has hashids defined')
+  console.log(testapp)
+  t.ok(testapp._name, 'testqpp._name exists')
+  t.ok(testapp._db, 'testqpp._db exists')
+  t.ok(testapp._doc, 'testqpp._doc exists')
   testapp.hashids.put({
     id: 'fake',
     foo: 'bar', 
