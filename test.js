@@ -30,7 +30,9 @@ test('fails correctly', t=> {
 var testapp
 test('put', t=>{
   t.plan(6)
+  console.time('data() invocation')
   testapp = data() // reads .arc 
+  console.timeEnd('data() invocation')
   t.ok(testapp, 'got data')
   t.ok(testapp.hashids, 'has hashids defined')
   console.log(testapp)
