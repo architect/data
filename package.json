@@ -6,6 +6,9 @@
   "scripts": {
     "test": "NODE_ENV=testing node test | tap-spec"
   },
+  "bin": {
+    "arc-repl": "repl.js"
+  },
   "keywords": [
     "arc",
     "architect",
@@ -16,14 +19,15 @@
   "author": "Brian LeRoux <b@brian.io>",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@architect/workflows": "^1.1.24",
     "aws-sdk": "^2.106.0",
+    "run-parallel": "^1.1.6",
     "tap-spec": "^4.1.1",
-    "tape": "^4.8.0",
-    "@architect/workflows": "^1.1.9",
-    "run-parallel": "^1.1.6"
+    "tape": "^4.8.0"
   },
   "dependencies": {
     "@architect/parser": "^1.0.6",
+    "chalk": "^2.3.0",
     "file-exists": "^4.0.0"
   }
 }
