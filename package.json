@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=testing tape 'test/*-test.js' | tap-spec",
+    "test:linux": "NODE_ENV=testing tape test/*-test.js | tap-spec",
     "start": "NODE_ENV=testing node repl"
   },
   "bin": {
