@@ -1,6 +1,6 @@
 var test = require('tape')
 var parallel = require('run-parallel')
-var data = require('.')
+var data = require('../')
 var arc = require('@architect/workflows')
 var path = require('path')
 
@@ -8,6 +8,9 @@ test('env', t=> {
   t.plan(1)
   t.ok(data, 'got data')
 })
+
+// major 🔑 because sandbox looks for .arc in cwd
+process.chdir(__dirname)
 
 var server
 test('starts the db server', t=> {

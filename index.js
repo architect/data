@@ -6,6 +6,31 @@ var _doc = require('./doc')
 var parse = require('@architect/parser')
 var exists = require('file-exists')
 
+// accepts an errback and returns a promisified fn
+function promised(fn) {
+  return function _promisified(params, callback) {
+    if (!callback) {
+      return new Promise(function(res, rej) {
+        fn(params, function(err, result) {
+          err ? rej(err) : res(result)
+        })
+      })
+    }
+    else {
+      fn(params, callback)
+    }
+  }
+}
+
+// accepts an object and promisifies all keys
+function pfy(obj) {
+  var copy = {}
+  Object.keys(obj).forEach(k=> {
+    copy[k] = promised(obj[k])
+  })
+  return copy
+}
+
 /**
  * reads the cwd .arc
  * and generates a data access layer
@@ -99,10 +124,11 @@ module.exports = function data(p) {
   })
 
   // add the tables to the returned object
+  // this creates the data.tablename namespace
   var index = 0
   var names = arc.tables.map(t=> Object.keys(t)[0])
   names.forEach(table=> {
-    layer[table] = data[index]
+    layer[table] = pfy(data[index])
     index += 1
   })
 
