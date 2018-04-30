@@ -29,7 +29,6 @@
   "dependencies": {
     "@architect/parser": "^1.0.6",
     "chalk": "^2.3.0",
-    "file-exists": "^4.0.0",
-    "tiny-json-http": "^7.0.0"
+    "file-exists": "^4.0.0"
   }
 }
