@@ -107,8 +107,8 @@ posts
 First we generate a client:
 
 ```javascript
+// reads node_modules/@architect/shared/.arc 
 var data = require('@architect/data')
-var app = data() // reads the local .arc in the current working dictory
 ```
 The `app` variable above looks like this:
 
@@ -123,7 +123,6 @@ You can immediately start using the generated methods:
 
 ```javascript
 var data = require('@architect/data')
-var app = data() // reads the local .arc in the current working dictory
 
 // create a post
 app.posts.put({
