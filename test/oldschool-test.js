@@ -3,14 +3,12 @@ var parallel = require('run-parallel')
 var data = require('../')
 var arc = require('@architect/workflows')
 var path = require('path')
+var testapp = require('../')
 
 test('env', t=> {
   t.plan(1)
-  t.ok(data, 'got data')
+  t.ok(testapp, 'got data')
 })
-
-// major 🔑 because sandbox looks for .arc in cwd
-process.chdir(__dirname)
 
 var server
 test('starts the db server', t=> {
@@ -20,22 +18,9 @@ test('starts the db server', t=> {
   })
 })
 
-test('fails correctly', t=> {
-  t.plan(1)
-  try {
-    testapp = data(path.join(__dirname, '..'))
-  }
-  catch(e) {
-    t.ok(e, e)
-  }
-})
 
-var testapp
 test('put', t=>{
   t.plan(6)
-  console.time('data() invocation')
-  testapp = data() // reads .arc 
-  console.timeEnd('data() invocation')
   t.ok(testapp, 'got data')
   t.ok(testapp.hashids, 'has hashids defined')
   console.log(testapp)
