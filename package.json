@@ -4,8 +4,8 @@
   "description": "Dynamically generate a DynamoDB data access layer from an .arc file",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=testing ARC_CONTRIB=yas tape 'test/*-test.js' | tap-spec",
-    "start": "NODE_ENV=testing ARC_CONTRIB=yas node repl"
+    "test": "NODE_ENV=testing ARC_LOCAL=yas tape 'test/*-test.js' | tap-spec",
+    "start": "NODE_ENV=testing ARC_LOCAL=yas node repl"
   },
   "bin": {
     "arc-repl": "repl.js"
