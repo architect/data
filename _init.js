@@ -1,10 +1,5 @@
-var fs = require('fs')
-var path = require('path')
-var aws = require('aws-sdk')
 var _db = require('./db')
 var _doc = require('./doc')
-var parse = require('@architect/parser')
-var exists = require('file-exists')
 var pfy = require('./_promisify-object')
 var testing = typeof process.env.NODE_ENV === 'undefined' || process.env.NODE_ENV === 'testing'
 
@@ -12,7 +7,7 @@ var testing = typeof process.env.NODE_ENV === 'undefined' || process.env.NODE_EN
  * accepts an arc object generates a data access layer
  */
 module.exports = function _init(arc) {
-  
+
   var app = arc.app[0]
 
   // helper for getting a table name
@@ -29,7 +24,7 @@ module.exports = function _init(arc) {
       var params = {}
       params.TableName = TableName
       params.Key = key
-      _doc.delete(params, callback)     
+      _doc.delete(params, callback)
     },
     get(key, callback) {
       var params = {}
@@ -38,38 +33,38 @@ module.exports = function _init(arc) {
       _doc.get(params, function _get(err, result) {
         if (err) callback(err)
         else callback(null, result.Item)
-      })     
+      })
     },
     put(item, callback) {
       var params = {}
       params.TableName = TableName
       params.Item = item
-      _doc.put(params, function _put(err, result) {
+      _doc.put(params, function _put(err) {
         if (err) callback(err)
-        else callback(null, item) 
-      })     
+        else callback(null, item)
+      })
     },
     query(params, callback) {
       params.TableName = TableName
-      _doc.query(params, callback)     
+      _doc.query(params, callback)
     },
     scan(params, callback) {
       params.TableName = TableName
-      _doc.scan(params, callback)     
+      _doc.scan(params, callback)
     },
     update(params, callback) {
       params.TableName = TableName
-      _doc.update(params, function _update(err, result) {
+      _doc.update(params, function _update(err) {
         if (err) callback(err)
-        else callback() 
-      })     
+        else callback()
+      })
     }
   }))
- 
+
   // builds out a data layer object
   var layer = {}
 
-  // add _name, _db and _doc helper shortcuts 
+  // add _name, _db and _doc helper shortcuts
   Object.defineProperty(layer, '_name', {
     enumerable: false,
     value: _name

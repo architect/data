@@ -1,8 +1,6 @@
 var test = require('tape')
 var parallel = require('run-parallel')
-var data = require('../')
 var arc = require('@architect/workflows')
-var path = require('path')
 var testapp = require('../')
 
 test('env', t=> {
@@ -13,7 +11,7 @@ test('env', t=> {
 var server
 test('starts the db server', t=> {
   t.plan(1)
-  server = arc.sandbox.db.start(x=> {
+  server = arc.sandbox.db.start(function _start() {
     t.ok(true, 'started db server')
   })
 })
@@ -29,12 +27,12 @@ test('put', t=>{
   t.ok(testapp._doc, 'testqpp._doc exists')
   testapp.hashids.put({
     id: 'fake',
-    foo: 'bar', 
+    foo: 'bar',
     baz: {
       one: 1,
       doe: true
     }
-  }, 
+  },
   function _put(err, item) {
     if (err) {
       t.fail(err)
@@ -51,7 +49,7 @@ test('get', t=> {
   t.plan(2)
   testapp.hashids.get({
     id: 'fake'
-  }, 
+  },
   function _get(err, result) {
     if (err) {
       t.fail(err)
@@ -69,7 +67,7 @@ test('delete', t=> {
   t.plan(2)
   testapp.hashids.delete({
     id: 'fake'
-  }, 
+  },
   function _delete(err) {
     if (err) {
       t.fail(err)
@@ -78,7 +76,7 @@ test('delete', t=> {
       t.ok(true, 'deleted')
       testapp.hashids.get({
         id: 'fake'
-      }, 
+      },
       function _get(err, result) {
         if (err) {
           t.fail(err)
@@ -104,7 +102,7 @@ test('query', t=> {
     function _three(callback) {
       testapp.hashids.put({id: 'three'}, callback)
     },
-  ], 
+  ],
   function _done(err, items) {
     if (err) {
       t.fail(err)
@@ -117,7 +115,7 @@ test('query', t=> {
         ExpressionAttributeValues: {
           ':id': 'one',
         }
-      }, 
+      },
       function _query(err, result) {
         if (err) {
           t.fail(err)
@@ -139,8 +137,8 @@ test('scan', t=> {
     FilterExpression : 'id = :id',
     ExpressionAttributeValues : {
       ':id' : 'two'
-    }  
-  }, 
+    }
+  },
   function _scan(err, result) {
     if (err) {
       t.fail(err)
@@ -156,17 +154,17 @@ test('scan', t=> {
 test('update', t=> {
   t.plan(3)
   testapp.hashids.update({
-    Key: { 
-      id: 'three' 
+    Key: {
+      id: 'three'
     },
-    UpdateExpression: 'set #hits = :hits', 
+    UpdateExpression: 'set #hits = :hits',
     ExpressionAttributeNames: {
       '#hits' : 'hits'
     },
     ExpressionAttributeValues: {
       ':hits' : 20,
     }
-  }, 
+  },
   function _update(err) {
     if (err) {
       t.fail(err)
@@ -185,7 +183,7 @@ test('update', t=> {
         else {
           t.ok(result, 'got result')
           t.ok(result.hits === 20, '20 hits')
-          console.log(result)      
+          console.log(result)
         }
       })
     }

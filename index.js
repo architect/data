@@ -3,9 +3,9 @@ var path = require('path')
 var parse = require('@architect/parser')
 var exists = fs.existsSync
 var init = require('./_init')
-  
+
 // path to the .arc for hydration
-var arcPath 
+var arcPath
 
 // see if we are testing @architect/data itself
 var diagnostics = process.env.NODE_ENV === 'testing' && process.env.hasOwnProperty('ARC_LOCAL')
@@ -18,13 +18,13 @@ else {
   // check for node_modules/@architect/shared/.arc
   arcPath = path.join(__dirname, '..', 'shared', '.arc')
 }
-  
+
 // if this module is required and cannot find .arc it will blow up
 var notFound = !exists(arcPath)
 if (notFound)
   throw ReferenceError('.arc file not found: ' + arcPath)
 
-// returns a client for the .arc 
+// returns a client for the .arc
 var arc = parse(fs.readFileSync(arcPath).toString())
 
 module.exports = init(arc)

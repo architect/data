@@ -1,7 +1,5 @@
-var test = require('tape')
-var parallel = require('run-parallel')
 var arc = require('@architect/workflows')
-var path = require('path')
+var test = require('tape')
 var testapp = require('../')
 
 test('env', t=> {
@@ -12,7 +10,7 @@ test('env', t=> {
 var server
 test('starts the db server', t=> {
   t.plan(1)
-  server = arc.sandbox.db.start(x=> {
+  server = arc.sandbox.db.start(function _start() {
     t.ok(true, 'started db server')
   })
 })
@@ -21,7 +19,7 @@ var testapp
 test('put', async t=>{
   t.plan(6)
   console.time('data() invocation')
-  // testapp = data() // reads .arc 
+  // testapp = data() // reads .arc
   console.timeEnd('data() invocation')
   t.ok(testapp, 'got data')
   t.ok(testapp.hashids, 'has hashids defined')
@@ -31,12 +29,12 @@ test('put', async t=>{
   t.ok(testapp._doc, 'testqpp._doc exists')
   var item = await testapp.hashids.put({
     id: 'fake',
-    foo: 'bar', 
+    foo: 'bar',
     baz: {
       one: 1,
       doe: true
     }
-  }) 
+  })
   t.ok(item, 'returned item')
   console.log(item)
 })
@@ -45,7 +43,7 @@ test('get', async t=> {
   t.plan(2)
   var result = await testapp.hashids.get({
     id: 'fake'
-  }) 
+  })
   t.ok(result, 'got result')
   t.ok(result.baz.doe, 'result.baz.doe deserialized')
   console.log(result)
@@ -55,11 +53,11 @@ test('delete', async t=> {
   t.plan(2)
   await testapp.hashids.delete({
     id: 'fake'
-  }) 
+  })
   t.ok(true, 'deleted')
   var result = await testapp.hashids.get({
     id: 'fake'
-  }) 
+  })
   t.ok(typeof result === 'undefined', 'got undefined result')
   console.log(result)
 })
@@ -92,7 +90,7 @@ test('scan', async t=> {
     FilterExpression : 'id = :id',
     ExpressionAttributeValues : {
       ':id' : 'two'
-    }  
+    }
   })
   t.ok(result, 'got a result')
   console.log(result)
@@ -101,10 +99,10 @@ test('scan', async t=> {
 test('update', async t=> {
   t.plan(3)
   await testapp.hashids.update({
-    Key: { 
-      id: 'three' 
+    Key: {
+      id: 'three'
     },
-    UpdateExpression: 'set #hits = :hits', 
+    UpdateExpression: 'set #hits = :hits',
     ExpressionAttributeNames: {
       '#hits' : 'hits'
     },
@@ -121,7 +119,7 @@ test('update', async t=> {
 
   t.ok(result, 'got result')
   t.ok(result.hits === 20, '20 hits')
-  console.log(result)      
+  console.log(result)
 })
 
 test('server closes', t=> {

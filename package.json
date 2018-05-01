@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=testing ARC_LOCAL=yas tape 'test/*-test.js' | tap-spec",
+    "lint": "eslint . --fix  --ignore-pattern node_modules",
     "start": "NODE_ENV=testing ARC_LOCAL=yas node repl"
   },
   "bin": {
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@architect/workflows": "^1.1.24",
     "aws-sdk": "^2.106.0",
+    "eslint": "^4.19.1",
     "run-parallel": "^1.1.6",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0"

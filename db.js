@@ -7,7 +7,7 @@ if (typeof process.env.NODE_ENV === 'undefined') {
   throw ReferenceError('NODE_ENV not defined')
 }
 
-if (testing) { 
+if (testing) {
   aws.config.update({
     region: 'us-west-1'
   })
