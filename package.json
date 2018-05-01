@@ -1,6 +1,6 @@
 {
   "name": "@architect/data",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Dynamically generate a DynamoDB data access layer from an .arc file",
   "main": "index.js",
   "scripts": {
