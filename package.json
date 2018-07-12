@@ -22,10 +22,10 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@architect/workflows": "^1.1.24",
-    "aws-sdk": "^2.106.0",
-    "eslint": "^4.19.1",
+    "aws-sdk": "^2.273.1",
+    "eslint": "^5.1.0",
     "run-parallel": "^1.1.6",
-    "tap-spec": "^4.1.1",
+    "tap-spec": "^5.0.0",
     "tape": "^4.8.0"
   },
   "dependencies": {
