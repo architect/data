@@ -5,8 +5,14 @@ var chalk = require('chalk')
 var prompt = chalk.green('#!/data> ')
 var workflows = require('@architect/workflows')
 
-var db = workflows.sandbox.db.start(function _start() {
+if (process.env.NODE_ENV === 'testing') {
+  var db = workflows.sandbox.db.start(function _start() {
+    var server = repl.start({prompt})
+    server.context.data = data
+    server.on('exit', db.close)
+  })
+}
+else {
   var server = repl.start({prompt})
   server.context.data = data
-  server.on('exit', db.close)
-})
+}

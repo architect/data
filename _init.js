@@ -1,7 +1,8 @@
 var _db = require('./db')
 var _doc = require('./doc')
 var pfy = require('./_promisify-object')
-var testing = typeof process.env.NODE_ENV === 'undefined' || process.env.NODE_ENV === 'testing'
+var env = process.env.NODE_ENV || 'testing'
+var testing = env === 'testing' || env === 'staging'
 
 /**
  * accepts an arc object generates a data access layer

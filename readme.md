@@ -160,5 +160,14 @@ app.posts.destroy({
 }, console.log)
 
 ```
+Check the tests for a detailed example! 
 
-Check the tests for a detailed example! More docs coming :soon:
+## `arc-repl`
+
+You can add `arc-repl` to your `package.json` in a few different ways:
+
+- Work locally with an in memory db `"repl:local": "arc-repl"`
+- Work locally with staging tables `"repl:staging": "ARC_LOCAL=yas NODE_ENV=staging arc-repl"`
+- Work locally with production tables `"repl:production": "ARC_LOCAL=yas NODE_ENV=production arc-repl"`
+
+Type `data` into the repl prompt to see available methods populated by `.arc`.
