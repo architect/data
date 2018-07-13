@@ -8,7 +8,7 @@ var init = require('./_init')
 var arcPath
 
 // see if we are testing @architect/data itself
-var diagnostics = process.env.NODE_ENV === 'testing' && process.env.hasOwnProperty('ARC_LOCAL')
+var diagnostics = process.env.hasOwnProperty('ARC_LOCAL')
 if (diagnostics) {
   // we are running self diagnostics
   arcPath = path.join(process.cwd(), '.arc')
