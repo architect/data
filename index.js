@@ -10,19 +10,21 @@ var arcPath
 // see if we are testing @architect/data itself
 var diagnostics = process.env.hasOwnProperty('ARC_LOCAL')
 if (diagnostics) {
-  // we are running self diagnostics
+  // explicitly chosing to use it
   arcPath = path.join(process.cwd(), '.arc')
 }
-else {
+else if (exists(path.join(process.cwd(), '.arc'))) {
+  // implicitly if .arc is in the cwd use that
+  arcPath = path.join(process.cwd(), '.arc')
+}
+else if (exists(path.join(__dirname, '..', 'shared', '.arc'))) {
   // otherwise we are: testing, staging or in production and loading from within node_modules
   // check for node_modules/@architect/shared/.arc
   arcPath = path.join(__dirname, '..', 'shared', '.arc')
 }
-
-// if this module is required and cannot find .arc it will blow up
-var notFound = !exists(arcPath)
-if (notFound)
+else {
   throw ReferenceError('.arc file not found: ' + arcPath)
+}
 
 // returns a client for the .arc
 var arc = parse(fs.readFileSync(arcPath).toString())
