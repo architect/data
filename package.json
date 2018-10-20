@@ -9,14 +9,16 @@
     "start": "NODE_ENV=testing ARC_LOCAL=yas node repl"
   },
   "bin": {
-    "arc-repl": "repl.js"
+    "arc-repl": "repl.js",
+    "repl": "repl.js"
   },
   "keywords": [
     "arc",
     "architect",
     "aws",
     "aws-sdk",
-    "dynamodb"
+    "dynamodb",
+    "repl"
   ],
   "author": "Brian LeRoux <b@brian.io>",
   "license": "Apache-2.0",
