@@ -1,2 +1,3 @@
 .arc
+.travis.yml
 test/*
