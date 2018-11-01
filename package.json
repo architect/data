@@ -23,7 +23,7 @@
   "author": "Brian LeRoux <b@brian.io>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@architect/workflows": "^1.1.24",
+    "@architect/workflows": "^3.6.0",
     "aws-sdk": "^2.273.1",
     "eslint": "^5.1.0",
     "run-parallel": "^1.1.6",
