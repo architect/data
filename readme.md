@@ -1,4 +1,5 @@
-# <kbd>:cloud_with_lightning: @architect/data</kbd>
+## [`@architect/data`](https://www.npmjs.com/package/@architect/data)
+[![Build Status](https://travis-ci.com/arc-repos/arc-data.svg?branch=master)](https://travis-ci.com/arc-repos/arc-data)
 
 > Generate a DynamoDB data access layer from an `.arc` file. Automatically disambiguates `testing` (in memory) from deployment `staging` and `production` tables
 
