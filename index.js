@@ -11,7 +11,7 @@ var arcPath
 var diagnostics = process.env.hasOwnProperty('ARC_LOCAL')
 if (diagnostics) {
   // explicitly chosing to use it
-  arcPath = path.join(process.cwd(), '.arc')
+  arcPath = path.join(process.cwd(), 'node_modules', '@architect', 'shared', '.arc')
 }
 else if (exists(path.join(process.cwd(), '.arc'))) {
   // implicitly if .arc is in the cwd use that
