@@ -2,7 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var parse = require('@architect/parser')
 var exists = fs.existsSync
-var init = require('./_init')
+var init = require('./src/_init')
 
 // path to the .arc for hydration
 var arcPath
