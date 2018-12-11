@@ -16,6 +16,7 @@ if (local) {
   let arc3 = path.join(process.cwd(), '.arc')
   if (exists(arc4)) arcPath = arc4
   else if (exists(arc3)) arcPath = arc3
+  else throw ReferenceError('.arc file not found: ' + arcPath)
 }
 else if (exists(path.join(process.cwd(), '.arc'))) {
   // implicitly if .arc is in the cwd use that
