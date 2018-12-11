@@ -31,8 +31,8 @@
     "tape": "^4.8.0"
   },
   "dependencies": {
-    "@architect/parser": "^1.0.6",
-    "chalk": "^2.3.0",
+    "@architect/parser": "^1.1.6",
+    "chalk": "^2.4.1",
     "path-exists": "^3.0.0"
   }
 }
