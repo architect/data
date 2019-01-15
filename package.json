@@ -20,6 +20,16 @@
     "dynamodb",
     "repl"
   ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2, 
+    "useTabs": false,
+    "trailingComma:": "es5", 
+    "bracketSpacing": false,
+    "endOfLine": "lf",
+    "printWidth": 1000 
+  },
   "author": "Brian LeRoux <b@brian.io>",
   "license": "Apache-2.0",
   "devDependencies": {
