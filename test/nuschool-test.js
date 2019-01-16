@@ -1,4 +1,4 @@
-var arc = require('@architect/workflows')
+var arc = require('@architect/architect')
 var test = require('tape')
 var testapp = require('../')
 

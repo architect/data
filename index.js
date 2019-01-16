@@ -21,7 +21,7 @@ else if (exists(arcInCurrentDir)) {
 }
 else if (exists(arcInSharedDir)) {
   // Otherwise we are: testing, staging, or in production and loading from within node_modules
-  // Eg, ./node_modules/@architect/shared/.arc  
+  // Eg, ./node_modules/@architect/shared/.arc
   arcPath = arcInSharedDir
 }
 else {
