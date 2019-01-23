@@ -1,6 +1,6 @@
 var test = require('tape')
 var parallel = require('run-parallel')
-var arc = require('@architect/workflows')
+var arc = require('@architect/architect')
 var testapp = require('../')
 
 test('env', t=> {
