@@ -5,12 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=testing tape 'test/*-test.js' | tap-spec",
-    "lint": "eslint . --fix  --ignore-pattern node_modules",
-    "start": "NODE_ENV=testing node repl"
-  },
-  "bin": {
-    "arc-repl": "repl.js",
-    "repl": "repl.js"
+    "lint": "eslint . --fix  --ignore-pattern node_modules"
   },
   "keywords": [
     "arc",
