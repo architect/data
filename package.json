@@ -23,8 +23,8 @@
     "path-exists": "^3.0.0"
   },
   "devDependencies": {
-    "@architect/architect": "^5.0.0",
-    "aws-sdk": "^2.392.0",
+    "@architect/architect": "^5.0.2",
+    "aws-sdk": "^2.393.0",
     "eslint": "^5.12.1",
     "run-parallel": "^1.1.9",
     "tap-spec": "^5.0.0",
