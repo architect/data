@@ -6,6 +6,26 @@ Also see:
 - [Architect Functions changelog](https://github.com/arc-repos/arc-functions/blob/master/changelog.md)
 ---
 
+## [2.0.14] - 2019-02-08
+
+
+### Changed
+
+- Updated dependencies, resolves [`lodash` CVE](https://nvd.nist.gov/vuln/detail/CVE-2018-16487)
+
+
+---
+
+## [2.0.13] - 2019-01-07
+
+
+### Changed
+
+- Updated dependencies
+
+
+---
+
 ## [2.0.12] - 2019-01-23
 
 
