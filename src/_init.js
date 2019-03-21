@@ -55,9 +55,10 @@ module.exports = function _init(arc) {
     },
     update(params, callback) {
       params.TableName = TableName
-      _doc.update(params, function _update(err) {
+      _doc.update(params, function _update(err, results) {
+        console.log('RESULTS:', results)
         if (err) callback(err)
-        else callback()
+        else callback(err, results)
       })
     }
   }))
