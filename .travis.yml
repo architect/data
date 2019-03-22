@@ -3,6 +3,7 @@ node_js:
   - "8.10"
 before_install:
   - npm i -g npm@latest
+  - npm --version
 install:
   - npm i
 script:
@@ -10,4 +11,3 @@ script:
   - printf "[default]\naws_access_key_id=foo\naws_secret_access_key=bar\nregion=us-west-1\n" > $TRAVIS_BUILD_DIR/../.aws/credentials
   - npm run lint
   - npm run test
-
