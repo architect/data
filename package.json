@@ -1,6 +1,6 @@
 {
   "name": "@architect/data",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "Dynamically generate a DynamoDB data access layer from an .arc file",
   "homepage": "https://github.com/arc-repos/arc-data",
   "repository": {
