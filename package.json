@@ -29,12 +29,12 @@
     "path-exists": "^3.0.0"
   },
   "devDependencies": {
-    "@architect/architect": "^5.5.0",
-    "aws-sdk": "^2.400.0",
-    "eslint": "^5.13.0",
+    "@architect/architect": "^5.5.10",
+    "aws-sdk": "^2.427.0",
+    "eslint": "^5.15.3",
     "run-parallel": "^1.1.9",
     "tap-spec": "^5.0.0",
-    "tape": "^4.9.2"
+    "tape": "^4.10.1"
   },
   "prettier": {
     "semi": false,
