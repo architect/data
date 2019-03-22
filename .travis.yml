@@ -7,10 +7,5 @@ before_install:
 install:
   - npm i
 script:
-  - mkdir $TRAVIS_BUILD_DIR/../.aws
-  - printf "[default]\naws_access_key_id=foo\naws_secret_access_key=bar\nregion=us-west-1\n" > $TRAVIS_BUILD_DIR/../.aws/credentials
-  - cat $TRAVIS_BUILD_DIR/../.aws
-  - pwd
-  - ls -la ~
-  - cd ~
-  - pwd
+  - npm run lint
+  - AWS_ACCESS_KEY_ID=foo AWS_SECRET_ACCESS_KEY=bar REGION=us-west-1 npm run test
