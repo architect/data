@@ -6,6 +6,20 @@ Also see:
 - [Architect Functions changelog](https://github.com/arc-repos/arc-functions/blob/master/changelog.md)
 ---
 
+## [2.0.15] - 2019-03-22
+
+
+### Fixed
+
+- Adds callback continuation missing from `data.update()` /ht @galley-solutions
+
+
+### Changed
+
+- Updated dependencies
+
+---
+
 ## [2.0.14] - 2019-02-08
 
 
