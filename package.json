@@ -2,6 +2,12 @@
   "name": "@architect/data",
   "version": "2.0.14",
   "description": "Dynamically generate a DynamoDB data access layer from an .arc file",
+  "homepage": "https://github.com/arc-repos/arc-data",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arc-repos/arc-data"
+  },
+  "bugs": "https://github.com/arc-repos/arc-data/issues",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=testing tape 'test/*-test.js' | tap-spec",
