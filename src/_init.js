@@ -81,12 +81,14 @@ module.exports = function _init(arc) {
 
   // add the tables to the returned object
   // this creates the data.tablename namespace
-  var index = 0
-  var names = arc.tables.map(t=> Object.keys(t)[0])
-  names.forEach(table=> {
-    layer[table] = pfy(data[index])
-    index += 1
-  })
+  if (arc.tables) {
+    let index = 0
+    let names = arc.tables.map(t=> Object.keys(t)[0])
+    names.forEach(table=> {
+      layer[table] = pfy(data[index])
+      index += 1
+    })
+  }
 
   return layer
 }
