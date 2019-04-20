@@ -31,7 +31,7 @@
   "devDependencies": {
     "@architect/architect": "^5.5.10",
     "aws-sdk": "^2.427.0",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "run-parallel": "^1.1.9",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
