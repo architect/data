@@ -9,15 +9,16 @@ var testing = env === 'testing' || env === 'staging'
  */
 module.exports = function _init(arc) {
 
-  var app = arc.app[0]
+  // the app namespace
+  let app = arc.app[0]
 
   // helper for getting a table name
   // if we're testing just always use 'staging' tables
   // otherwise falls back to the appname-tablename-env convention
   var _name = name=> `${app}-${testing? 'staging' : process.env.NODE_ENV}-${name}`
 
-  // gets all the tables for the current env
-  var tables = arc.tables.slice(0).map(t=> _name(Object.keys(t)[0]))
+  // list of all tables (if any) defined in .arc
+  let tables = arc.tables? arc.tables.slice(0).map(t=> _name(Object.keys(t)[0])) : []
 
   // create a map of data access methods for each table
   var data = tables.map(TableName=> ({
