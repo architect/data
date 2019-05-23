@@ -10,6 +10,7 @@
   "bugs": "https://github.com/arc-repos/arc-data/issues",
   "main": "index.js",
   "scripts": {
+    "t": "NODE_ENV=testing tape 'test/cloudformation-test.js' | tap-spec",
     "test": "NODE_ENV=testing tape 'test/*-test.js' | tap-spec",
     "lint": "eslint . --fix  --ignore-pattern node_modules"
   },
