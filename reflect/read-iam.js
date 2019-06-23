@@ -25,7 +25,7 @@ module.exports = function readIAM(callback) {
           // extract the table arns
           let arns = policy.Statement[0].Resource
           // helper to split the arn and return just the physical table name
-          let table = arn=> arn.split('table/')[1]
+          let table = arn=> arn.split('table/')[1].replace('/*', '')
           // helper to return the tables as: {logicalID, physicalID}
           let map = tbl=> ({logicalID: tbl.split('-')[1], physicalID: tbl})
           // helper to filter out streams
