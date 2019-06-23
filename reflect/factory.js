@@ -40,7 +40,7 @@ function toLogicalID(str) {
 function factory(tables) {
   return function clientFactory(table) {
     let tablename = Object.keys(table)[0]
-    let find = ({logicalID})=> logicalID === toLogicalID(tablename)
+    let find = ({logicalID})=> logicalID === `${toLogicalID(tablename)}Table`
     let TableName = tables.find(find).physicalID
     if (!TableName)
       throw ReferenceError(`${tablename} table not found!`)

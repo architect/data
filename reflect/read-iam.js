@@ -28,8 +28,10 @@ module.exports = function readIAM(callback) {
           let table = arn=> arn.split('table/')[1]
           // helper to return the tables as: {logicalID, physicalID}
           let map = tbl=> ({logicalID: tbl.split('-')[1], physicalID: tbl})
+          // helper to filter out streams
+          let stream = arn=> !arn.includes('stream')
           // clean up the arns w the helpers
-          tables = arns.map(table).map(map)
+          tables = arns.filter(stream).map(table).map(map)
           // return the cleaned up payload
           callback(null, tables)
         }
