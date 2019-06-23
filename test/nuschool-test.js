@@ -1,21 +1,21 @@
-var arc = require('@architect/architect')
-var test = require('tape')
-var testapp = require('../')
+let sandbox = require('@architect/sandbox')
+let test = require('tape')
+let testapp = require('../')
 
 test('env', t=> {
   t.plan(1)
   t.ok(testapp, 'got data')
 })
 
-var server
+let server
 test('starts the db server', t=> {
   t.plan(1)
-  server = arc.sandbox.db.start(function _start() {
+  server = sandbox.db.start(function _start() {
     t.ok(true, 'started db server')
   })
 })
 
-var testapp
+//let testapp
 test('put', async t=>{
   t.plan(6)
   console.time('data() invocation')
@@ -27,7 +27,7 @@ test('put', async t=>{
   t.ok(testapp._name, 'testqpp._name exists')
   t.ok(testapp._db, 'testqpp._db exists')
   t.ok(testapp._doc, 'testqpp._doc exists')
-  var item = await testapp.hashids.put({
+  let item = await testapp.hashids.put({
     id: 'fake',
     foo: 'bar',
     baz: {
@@ -41,7 +41,7 @@ test('put', async t=>{
 
 test('get', async t=> {
   t.plan(2)
-  var result = await testapp.hashids.get({
+  let result = await testapp.hashids.get({
     id: 'fake'
   })
   t.ok(result, 'got result')
@@ -55,7 +55,7 @@ test('delete', async t=> {
     id: 'fake'
   })
   t.ok(true, 'deleted')
-  var result = await testapp.hashids.get({
+  let result = await testapp.hashids.get({
     id: 'fake'
   })
   t.ok(typeof result === 'undefined', 'got undefined result')
@@ -64,7 +64,7 @@ test('delete', async t=> {
 
 test('query', async t=> {
   t.plan(3)
-  var items = await Promise.all([
+  let items = await Promise.all([
     testapp.hashids.put({id: 'one'}),
     testapp.hashids.put({id: 'two'}),
     testapp.hashids.put({id: 'three'}),
@@ -72,7 +72,7 @@ test('query', async t=> {
 
   t.ok(items, 'got items')
 
-  var result = await testapp.hashids.query({
+  let result = await testapp.hashids.query({
     KeyConditionExpression: 'id = :id',
     ExpressionAttributeValues: {
       ':id': 'one',
@@ -86,7 +86,7 @@ test('query', async t=> {
 
 test('scan', async t=> {
   t.plan(1)
-  var result = await testapp.hashids.scan({
+  let result = await testapp.hashids.scan({
     FilterExpression : 'id = :id',
     ExpressionAttributeValues : {
       ':id' : 'two'
@@ -113,7 +113,7 @@ test('update', async t=> {
 
   t.ok(true, 'updated without error')
 
-  var result = await testapp.hashids.get({
+  let result = await testapp.hashids.get({
     id: 'three'
   })
 

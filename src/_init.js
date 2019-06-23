@@ -1,5 +1,5 @@
-let _db = require('./db')
-let _doc = require('./doc')
+let _db = require('../db')
+let _doc = require('../doc')
 let tables = require('./_get-tables')
 let pfy = require('./_promisify-object')
 let env = process.env.NODE_ENV || 'testing'

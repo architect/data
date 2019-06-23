@@ -1,12 +1,13 @@
-var fs = require('fs')
-var path = require('path')
-var parse = require('@architect/parser')
-var exists = fs.existsSync
-var init = require('./src/_init')
+let fs = require('fs')
+let path = require('path')
+let parse = require('@architect/parser')
+let exists = fs.existsSync
+let init = require('./src/_init')
 
-// path to the .arc for hydration
-var arcPath
-
+/**
+ * NOTE: this code path will incur a bunch of sync lookups
+ */
+let arcPath
 let arcDefault = path.join(process.cwd(), 'node_modules', '@architect', 'shared', '.arc')
 let arcInCurrentDir = path.join(process.cwd(), '.arc')
 let arcInSharedDir = path.join(__dirname, '..', 'shared', '.arc')
@@ -29,6 +30,6 @@ else {
 }
 
 // returns a client for the .arc
-var arc = parse(fs.readFileSync(arcPath).toString())
+let arc = parse(fs.readFileSync(arcPath).toString())
 
 module.exports = init(arc)

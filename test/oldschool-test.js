@@ -1,6 +1,6 @@
 var test = require('tape')
 var parallel = require('run-parallel')
-var arc = require('@architect/architect')
+var sandbox = require('@architect/sandbox')
 var testapp = require('../')
 
 test('env', t=> {
@@ -11,7 +11,7 @@ test('env', t=> {
 var server
 test('starts the db server', t=> {
   t.plan(1)
-  server = arc.sandbox.db.start(function _start() {
+  server = sandbox.db.start(function _start() {
     t.ok(true, 'started db server')
   })
 })

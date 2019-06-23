@@ -77,7 +77,7 @@ doc.get({noteID:1}, console.log)
 ```
 DocumentClient has comprehensive support for querying and mutating data.[Full documentation for DocumentClient can be found here.](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html)
 
-## Convienance with `@architect/data`
+## Convenience with `@architect/data`
 
 This library bundles the `db` and `doc` connection scripts above. However it does require hard coding `TableName` which might not be desirable. So this module exports a single function for generating a static data access layer client that automatically resolves `TableName` based on `NODE_ENV`.
 
@@ -126,23 +126,17 @@ You can immediately start using the generated methods:
 var data = require('@architect/data')
 
 // create a post
-app.posts.put({
+await app.posts.put({
   accountID: 'fake-id',
   postID: 'fake-post-id',
   title: 'neato'
-}, 
-function _put(err, result) {
-  if (err) throw err
-  console.log(result)
-})
+}) 
 
 // read it back
-app.posts.get({
-  postID: 'fake-post-id'
-}, console.log)
+let post = await app.posts.get({postID: 'fake-post-id'})
 
 // update the record
-app.posts.update({
+await app.posts.update({
   Key: { 
     postID: 'fake-post-id' 
   },
@@ -153,12 +147,12 @@ app.posts.update({
   ExpressionAttributeValues: {
     ':title' : 'super neato',
   }
-}, console.log)
+})
 
 // destroy it
-app.posts.destroy({
+await app.posts.destroy({
   postID: 'fake-post-id'
-}, console.log)
+})
 
 ```
 Check the tests for a detailed example! 
