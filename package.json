@@ -25,12 +25,10 @@
   "author": "Brian LeRoux <b@brian.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@architect/parser": "^1.1.7",
-    "@architect/sandbox": "^1.0.10",
-    "chalk": "^2.4.2",
-    "path-exists": "^3.0.0"
+    "@architect/parser": "^1.1.7"
   },
   "devDependencies": {
+    "@architect/sandbox": "^1.0.10",
     "aws-sdk": "^2.480.0",
     "eslint": "^5.16.0",
     "run-parallel": "^1.1.9",
