@@ -2,7 +2,7 @@ let aws = require('aws-sdk')
 let http = require('https')
 
 // ensure NODE_ENV
-if (typeof process.env.NODE_ENV === 'undefined') 
+if (typeof process.env.NODE_ENV === 'undefined')
   process.env.NODE_ENV = 'testing'
 
 if (process.env.NODE_ENV != 'testing') {
@@ -15,6 +15,9 @@ if (process.env.NODE_ENV != 'testing') {
      httpOptions: {agent}
   })
 }
+
+if (!process.env.AWS_REGION)
+  process.env.AWS_REGION = 'us-west-1'
 
 let DB = aws.DynamoDB
 let endpoint = new aws.Endpoint('http://localhost:5000')

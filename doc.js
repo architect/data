@@ -16,6 +16,9 @@ if (process.env.NODE_ENV != 'testing') {
   })
 }
 
+if (!process.env.AWS_REGION)
+  process.env.AWS_REGION = 'us-west-1'
+
 // get a ref to the db
 let Doc = aws.DynamoDB.DocumentClient
 let endpoint = new aws.Endpoint('http://localhost:5000')
