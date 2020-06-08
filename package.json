@@ -30,7 +30,7 @@
   "devDependencies": {
     "@architect/sandbox": "^1.0.10",
     "aws-sdk": "^2.480.0",
-    "eslint": "^5.16.0",
+    "eslint": "^7.2.0",
     "run-parallel": "^1.1.9",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.2"
